@@ -6,7 +6,7 @@ import axios from "axios";
 
 const StreamView = () => {
 
-    const IP_ADDRESS = "10.2.71.238"
+    const IP_ADDRESS = "sahan.local"
     const [message, setMessage] = useState("")
     const [loading, setLoading] = useState(false)
 
@@ -33,7 +33,7 @@ const StreamView = () => {
     }
 
     return (
-        <View style={{flex: 1, paddingTop: 32, paddingBottom: 10, paddingHorizontal: 10}}>
+        <View style={{flex: 1, padding: 10}}>
             <WebView
                 style={styles.container}
                 source={{uri: `http://${IP_ADDRESS}:8080/video_feed`}}
