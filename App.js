@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import StreamView from "./src/views/StreamView";
+import {useEffect, useState} from "react";
+import SplashView from "./src/views/SplashView";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    const [showSplash, setShowSplash] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowSplash(false);
+        }, 1500);
+
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
+
+    return (
+        <>
+            {showSplash && <SplashView />}
+            {!showSplash && <StreamView />}
+        </>
+    );
+}
